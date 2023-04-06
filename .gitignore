@@ -1,2 +1,7 @@
+something_interesting/target/
+something_interesting/Cargo.lock
 target/
+
 Cargo.lock
+
+
