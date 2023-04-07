@@ -3,14 +3,20 @@
 #![allow(dead_code)]
 use cursive::Cursive;
 use cursive::views::{ Button, Dialog, LinearLayout };
+use std::fs;
+use serde::{Serialize, Deserialize};
+
 
 pub fn something_interesting(s: &mut Cursive) {
     s.pop_layer();
     s.add_layer(
-        Dialog::text("I actually do.")
+        Dialog::text("I actually have someting")
         .title("Welcome")
         .button("What is it?", |s| wanna_play_a_game(s))
-        .button("I don't want it.", |s| s.quit())
+        .button("Is it cake?", |s| {
+            
+            s.quit();
+        })
     );
 }
 

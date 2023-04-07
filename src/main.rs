@@ -4,6 +4,7 @@ use cursive::views::Dialog;
 use something_interesting::something_interesting;
 use std::env;
 
+
 fn main() {
     let opened_count = env::var("OPENED_COUNT").unwrap_or_default();
     let mut counter = opened_count.parse::<u32>().unwrap_or_default();
@@ -21,15 +22,24 @@ fn main() {
     siv.add_layer(
         Dialog::text(hi)
         .title("Welcome")
-        .button("Hope you have something interesting.", |s| something_interesting(s))
-        .button("Don't talk to me in that tone!", |s| that_tone())
-        .button("Hello master.", |s| good_boy())
+        .button("Hi!", |s| start(s))
+        .button("Quit", |s| s.quit())
     );
 
     siv.run();
 
 }
 
+fn start(s: &mut Cursive) {
+    s.add_layer(
+        Dialog::text("What path are we taking?")
+        .title("Welcome")
+        .button("I'm want to be surprised", |s| something_interesting(s))
+        .button("I just wanna kill monsters", |s| ())
+        .button("I don't know", |s| good_boy())
+        );
+
+}
 
 fn that_tone() {
 
